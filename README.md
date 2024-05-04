@@ -99,7 +99,14 @@ The email and password is provide in the UserSeeder.php file.
 - **Controller:** `StoreController`
 - **Description:** Similar to books, these routes manage CRUD operations for store entities, facilitating the management of store data within the system.
 
-#### 4. **Book-Store Relationship Management**
+#### 4. **Active and Inactive Stores**
+- **Endpoints:**
+  - `GET /v1/stores/active` - List all active stores
+  - `GET /v1/stores/inactive` - List all inactive stores
+- **Controller:** `StoreController`
+- **Description:** These routes allow querying stores based on their active status. The `/active` endpoint lists all stores currently active, whereas the `/inactive` endpoint lists all stores that are not active, supporting effective management and visibility of store states.
+
+#### 5. **Book-Store Relationship Management**
 - **Endpoints:**
   - `GET /v1/books/{bookId}/stores` - List all stores associated with a specific book
   - `POST /v1/books/{bookId}/stores/{storeId}` - Attach a store to a specific book
@@ -108,9 +115,18 @@ The email and password is provide in the UserSeeder.php file.
 - **Controllers:** `BookController` and `StoreController`
 - **Description:** These routes handle the many-to-many relationship between books and stores, allowing users to associate books with stores and vice versa, supporting complex relational data management.
 
-#### 5. **User Information**
+#### 6. **User Information**
 - **Endpoint:** `GET /v1/user`
 - **Function:** Inline within the route definition
 - **Description:** This route provides a way to fetch the currently authenticated user's information, useful for verifying login status and user details in front-end applications.
 
+### Remarks
 
+#### 1. ISBN Update Restriction
+- **Details:** ISBNs (International Standard Book Number) cannot be updated once they are assigned to a book.
+- **Reason:** The ISBN serves as a unique identifier for books worldwide and is used for tracking, cataloging, and sales purposes across different platforms and libraries. Changing an ISBN after it has been assigned can lead to discrepancies in data tracking, reporting errors, and potential issues with book sales and inventory management. By preventing updates to the ISBN, we ensure data integrity and consistency across all systems that interact with our book records.
+
+#### 2. Default Active State for New Stores
+- **Details:** When a new store is created, it is set to be active by default.
+- **Implementation Logic:** This approach simplifies the process of adding new stores to the system and ensures that they are immediately available for transactions and interactions without requiring an additional step to activate them. This can be particularly useful in systems where the majority of new stores are expected to commence operations soon after registration.
+- **Reason:** Setting stores to be active by default streamlines operations and reduces the overhead of manually activating each new store. This is beneficial for business dynamics where rapid scaling and quick integration of new outlets are critical.

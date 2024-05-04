@@ -1,56 +1,66 @@
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-## Technical Challenge
-This repository stores the technical test for the position of backend developer at Search and Stay Company.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-## Stack Used
-- Laravel 11
-- Laravel Sail
-- PHP 8.3
-- MySQL 8.0
-- Pest PHP 
+## About Laravel
 
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-### Setting Up the Project with Laravel Sail
-Laravel Sail provides a simple Docker-based development environment for your Laravel applications. To upload and start the project using Laravel Sail, follow these steps:
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-1. Clone the repository to your local machine:
-   ```bash
-   git clone git@github.com:yanbrasiliano/code-challenge-search-and-stay.git
-   cd code-challenge-search-and-stay
-   ```
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-2. Start the Docker environment using Laravel Sail. If you don't have Sail installed globally, you can run it using the vendor binaries:
-   ```bash
-   ./vendor/bin/sail up
-   ```
+## Learning Laravel
 
-   Or if you have Laravel Sail installed globally, you can simply use:
-   ```bash
-   sail up
-   ```
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-   This command will build the Docker containers for the project and start the services defined in your `docker-compose.yml` file, such as MySQL, Redis, etc.
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-### Handling Permission Issues
-If you encounter any permission issues during the setup or while running the application, use the `permissions.sh` shell script included in the repository. This script sets the correct permissions for the storage directories and other necessary files. Run the script as follows:
-   ```bash
-   ./permissions.sh
-   ```
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-This will adjust the necessary permissions, allowing Laravel and Docker to access and write to the required directories.
+## Laravel Sponsors
 
-### Running Automated PHP Pest Tests
-This project uses PHP Pest for automated testing to ensure code quality and functionality. To run the tests, execute the following command within your Docker environment:
-   ```bash
-   ./vendor/bin/sail artisan test
-   ```
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-   Alternatively, if you have Laravel Sail running, you can directly use:
-   ```bash
-   sail artisan test
-   ```
+### Premium Partners
 
-These commands will run all automated tests in the `tests` directory, providing a summary of passed and failed tests. This is useful for continuous integration or checking the health of your project after changes.
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[WebReinvent](https://webreinvent.com/)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Jump24](https://jump24.co.uk)**
+- **[Redberry](https://redberry.international/laravel/)**
+- **[Active Logic](https://activelogic.com)**
+- **[byte5](https://byte5.de)**
+- **[OP.GG](https://op.gg)**
 
-### Architectural Decision
-For this project, i have chosen not to utilize Domain Driven Design (DDD). In the context of Laravel, implementing DDD can often be considered "overengineering", particularly for projects where the complexity does not demand the abstractions provided by DDD. Laravel's framework already offers robust MVC architecture and built-in functionalities that adequately support the requirements of this technical test. This decision allows us to maintain simplicity and clarity while fully leveraging Laravel's native capabilities to deliver a well-structured and efficient solution.
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Code of Conduct
+
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

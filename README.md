@@ -65,7 +65,7 @@ For this project, i have chosen not to utilize Domain Driven Design (DDD). In th
 
 The authenticated API routes are secured using Laravel Sanctum, providing token-based authentication to protect sensitive operations and ensure that only authenticated users can access specific functionalities.
 
-### How do I log into the application via API Client (Postman, Insomnia...) ?  
+### How to log in to the application via the API client (Postman, Insomnia...)
 To log into the application via an API client, you need to send a POST request to the `/v1/login` endpoint with the user's email and password. The API will authenticate the user and return an access token that you can use to access authenticated routes.
 
 The email and password is provide in the UserSeeder.php file.

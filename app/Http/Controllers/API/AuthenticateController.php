@@ -4,9 +4,8 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Controller;
-
+use Symfony\Component\HttpFoundation\Response;
 class AuthenticateController extends Controller
 {
   public function login(Request $request)
@@ -24,17 +23,21 @@ class AuthenticateController extends Controller
 
       $user = Auth::user();
       $token = $user->createToken('api-token')->plainTextToken;
-      return response()->json(['token' => $token], 200);
+      return response()->json([
+        'message' => 'Authenticated successfully',
+        'user' => $user,
+        'token' => $token
+      ], Response::HTTP_OK);
     }
 
-    throw ValidationException::withMessages([
-      'email' => ['The provided credentials are incorrect.'],
-    ]);
+    return response()->json([
+      'message' => 'The provided credentials are incorrect.'
+    ], Response::HTTP_UNAUTHORIZED);
   }
 
   public function logout(Request $request)
   {
     $request->user()->currentAccessToken()->delete();
-    return response()->json(['message' => 'Logged out successfully'], 200);
+    return response()->json(['message' => 'Logged out successfully'], Response::HTTP_OK);
   }
 }

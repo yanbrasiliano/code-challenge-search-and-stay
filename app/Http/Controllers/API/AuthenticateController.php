@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+
 class AuthenticateController extends Controller
 {
-  public function login(Request $request)
+  public function login(LoginRequest $request)
   {
-    $request->validate([
-      'email' => 'required|email',
-      'password' => 'required',
-    ]);
-
     if (Auth::attempt($request->only('email', 'password'))) {
 
       /**
@@ -23,6 +20,7 @@ class AuthenticateController extends Controller
 
       $user = Auth::user();
       $token = $user->createToken('api-token')->plainTextToken;
+
       return response()->json([
         'message' => 'Authenticated successfully',
         'user' => $user,

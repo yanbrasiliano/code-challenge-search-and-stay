@@ -1,66 +1,116 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Technical Challenge
+This repository stores the technical test for the position of backend developer at Search and Stay Company.
 
-## About Laravel
+## Stack Used
+- Laravel 11
+- Laravel Sail
+- PHP 8.3
+- MySQL 8.0
+- Pest PHP 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Setting Up the Project with Laravel Sail
+Laravel Sail provides a simple Docker-based development environment for your Laravel applications. To upload and start the project using Laravel Sail, follow these steps:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. Clone the repository to your local machine:
+   ```bash
+   git clone git@github.com:yanbrasiliano/code-challenge-search-and-stay.git
+   cd code-challenge-search-and-stay
+   ```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+2. Start the Docker environment using Laravel Sail. If you don't have Sail installed globally, you can run it using the vendor binaries:
+   ```bash
+   ./vendor/bin/sail up
+   ```
 
-## Learning Laravel
+   Or if you have Laravel Sail installed globally, you can simply use:
+   ```bash
+   sail up
+   ```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+   This command will build the Docker containers for the project and start the services defined in your `docker-compose.yml` file, such as MySQL.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### How to start the application after uploading the container to Laravel Sail
+1. Run the command below to create the database tables
+   ```bash
+   sail artisan migrate --seed
+   ```
 
-## Laravel Sponsors
+### Handling Permission Issues
+If you encounter any permission issues during the setup or while running the application, use the `permissions.sh` shell script included in the repository. This script sets the correct permissions for the storage directories and other necessary files. Run the script as follows:
+   ```bash
+   ./permissions.sh
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+This will adjust the necessary permissions, allowing Laravel and Docker to access and write to the required directories.
 
-### Premium Partners
+### Running Automated PHP Pest Tests
+This project uses PHP Pest for automated testing to ensure code quality and functionality. To run the tests, execute the following command within your Docker environment:
+   ```bash
+   ./vendor/bin/sail artisan test
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+   Alternatively, if you have Laravel Sail running, you can directly use:
+   ```bash
+   sail artisan test
+   ```
 
-## Contributing
+These commands will run all automated tests in the `tests` directory, providing a summary of passed and failed tests. This is useful for continuous integration or checking the health of your project after changes.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Architectural Decision
+For this project, i have chosen not to utilize Domain Driven Design (DDD). In the context of Laravel, implementing DDD can often be considered "overengineering", particularly for projects where the complexity does not demand the abstractions provided by DDD. Laravel's framework already offers robust MVC architecture and built-in functionalities that adequately support the requirements of this technical test. This decision allows us to maintain simplicity and clarity while fully leveraging Laravel's native capabilities to deliver a well-structured and efficient solution.
 
-## Code of Conduct
+## Authenticated API Routes Overview
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+The authenticated API routes are secured using Laravel Sanctum, providing token-based authentication to protect sensitive operations and ensure that only authenticated users can access specific functionalities.
 
-## Security Vulnerabilities
+### How do I log into the application via API Client (Postman, Insomnia...) ?  
+To log into the application via an API client, you need to send a POST request to the `/v1/login` endpoint with the user's email and password. The API will authenticate the user and return an access token that you can use to access authenticated routes.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+The email and password is provide in the UserSeeder.php file.
+- **Email:** admin@admin.com
+- **Password:** admin
 
-## License
+### Specific Authenticated Routes
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### 1. Logout
+- **Endpoint:** `POST /v1/logout`
+- **Controller:** `AuthenticateController@logout`
+- **Description:** This route handles user logout by revoking the current access token, an essential security feature that allows users to actively terminate sessions.
+
+#### 2. **Resource Routes for Books**
+- **Endpoints:**
+  - `GET /v1/books` - List all books (index)
+  - `POST /v1/books` - Create a new book (store)
+  - `GET /v1/books/{id}` - Show a specific book (show)
+  - `PUT/PATCH /v1/books/{id}` - Update a specific book (update)
+  - `DELETE /v1/books/{id}` - Delete a specific book (destroy)
+- **Controller:** `BookController`
+- **Description:** These routes provide full CRUD operations for books, allowing the creation, retrieval, updating, and deletion of book records, facilitating the management of book resources within the application.
+
+#### 3. **Resource Routes for Stores**
+- **Endpoints:**
+  - `GET /v1/stores` - List all stores (index)
+  - `POST /v1/stores` - Create a new store (store)
+  - `GET /v1/stores/{id}` - Show a specific store (show)
+  - `PUT/PATCH /v1/stores/{id}` - Update a specific store (update)
+  - `DELETE /v1/stores/{id}` - Delete a specific store (destroy)
+- **Controller:** `StoreController`
+- **Description:** Similar to books, these routes manage CRUD operations for store entities, facilitating the management of store data within the system.
+
+#### 4. **Book-Store Relationship Management**
+- **Endpoints:**
+  - `GET /v1/books/{bookId}/stores` - List all stores associated with a specific book
+  - `POST /v1/books/{bookId}/stores/{storeId}` - Attach a store to a specific book
+  - `DELETE /v1/books/{bookId}/stores/{storeId}` - Detach a store from a specific book
+  - `GET /v1/stores/{storeId}/books` - List all books available in a specific store
+- **Controllers:** `BookController` and `StoreController`
+- **Description:** These routes handle the many-to-many relationship between books and stores, allowing users to associate books with stores and vice versa, supporting complex relational data management.
+
+#### 5. **User Information**
+- **Endpoint:** `GET /v1/user`
+- **Function:** Inline within the route definition
+- **Description:** This route provides a way to fetch the currently authenticated user's information, useful for verifying login status and user details in front-end applications.
+
+

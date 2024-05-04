@@ -122,11 +122,14 @@ The email and password is provide in the UserSeeder.php file.
 
 ### Remarks
 
-#### 1. ISBN Update Restriction
-- **Details:** ISBNs (International Standard Book Number) cannot be updated once they are assigned to a book.
-- **Reason:** The ISBN serves as a unique identifier for books worldwide and is used for tracking, cataloging, and sales purposes across different platforms and libraries. Changing an ISBN after it has been assigned can lead to discrepancies in data tracking, reporting errors, and potential issues with book sales and inventory management. By preventing updates to the ISBN, we ensure data integrity and consistency across all systems that interact with our book records.
-
-#### 2. Default Active State for New Stores
+#### 1. Default Active State for New Stores
 - **Details:** When a new store is created, it is set to be active by default.
 - **Implementation Logic:** This approach simplifies the process of adding new stores to the system and ensures that they are immediately available for transactions and interactions without requiring an additional step to activate them. This can be particularly useful in systems where the majority of new stores are expected to commence operations soon after registration.
 - **Reason:** Setting stores to be active by default streamlines operations and reduces the overhead of manually activating each new store. This is beneficial for business dynamics where rapid scaling and quick integration of new outlets are critical.
+
+### 2. Use Laravel 11 with Structure Laravel 10 and PHP 8.3 Features
+- **Details:** The project uses Laravel 11 with the structure of Laravel 10 and PHP 8.3 features.
+- **Reason:** Laravel 11 provides the latest features, improvements, and security updates for the Laravel framework, ensuring that the application benefits from the latest advancements in the ecosystem. By combining Laravel 11 with the structure of Laravel 10, we maintain a familiar and consistent codebase that aligns with Laravel's best practices and conventions. Additionally, leveraging PHP 8.3 features enhances performance, security, and maintainability, enabling efficient development and robust application functionality.
+- **Benefits:** This approach allows us to harness the power of Laravel's latest version while preserving the structure and organization of Laravel 10, providing a seamless upgrade path and ensuring compatibility with existing codebases. The integration of PHP 8.3 features further enhances the application's capabilities and performance, delivering a modern and efficient development environment.
+- **Impact:** By adopting Laravel 11 with the structure of Laravel 10 and PHP 8.3 features, we can leverage the latest technologies and tools to build scalable, secure, and high-performance applications that meet the evolving needs of users and businesses. This approach ensures that the application remains up-to-date, efficient, and well-maintained, enabling continuous innovation and growth in the digital landscape.
+- **Reason:** The decision to use Laravel 11 with the structure of Laravel 10 and PHP 8.3 features reflects a strategic choice to balance the benefits of the latest technologies with the stability and reliability of established frameworks and practices. This approach ensures that the application remains robust, secure, and performant while leveraging the advancements and improvements offered by Laravel 11 and PHP 8.3. 

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Book;
+use Dotenv\Exception\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 
 class BookService
@@ -24,14 +25,16 @@ class BookService
 
   public function updateBook($id, $data)
   {
-    $book = Book::findOrFail($id);
-
-    if (isset($data['isbn']) && $data['isbn'] !== $book->isbn) {
-      throw new AuthorizationException("The ISBN of a book cannot be changed once set due to its role as a unique identifier for cataloging and tracking purposes.");
+    try {
+      $book = Book::findOrFail($id);
+      $book->update($data);
+      return response()->json($book, 200);
+    } catch (ValidationException $e) {
+      return response()->json(['error' => $e->getMessage()], 422);
     }
-    $book->update($data);
-    return $book;
   }
+
+
 
   public function deleteBook($id)
   {

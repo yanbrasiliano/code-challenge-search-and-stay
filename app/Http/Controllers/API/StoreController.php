@@ -31,7 +31,6 @@ class StoreController extends Controller
 
   public function store(StoreCreateRequest $request)
   {
-    dd($request);
     $store = $this->storeService->createStore($request->validated());
     return response()->json($store, Response::HTTP_CREATED);
   }

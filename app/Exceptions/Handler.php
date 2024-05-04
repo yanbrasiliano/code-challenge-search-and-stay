@@ -5,8 +5,11 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Validation\ValidationException;
+
 use Throwable;
 use Illuminate\Http\Response;
+
 
 class Handler extends ExceptionHandler
 {
@@ -55,6 +58,8 @@ class Handler extends ExceptionHandler
       }
     }
   }
+
+
 
   /**
    * Handle Model Not Found Exception.

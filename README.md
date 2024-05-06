@@ -56,19 +56,19 @@ This project uses PHP Pest for automated testing to ensure code quality and func
    sail artisan test
    ```
 
-These commands will run all automated tests in the `tests` directory, providing a summary of passed and failed tests. This is useful for continuous integration or checking the health of your project after changes.
+These commands will run all automated tests in the `tests` directory, summarizing passed and failed tests. This is useful for continuous integration or checking the health of your project after changes.
 
 ### Architectural Decision
-For this project, i have chosen not to utilize Domain Driven Design (DDD). In the context of Laravel, implementing DDD can often be considered "overengineering", particularly for projects where the complexity does not demand the abstractions provided by DDD. Laravel's framework already offers robust MVC architecture and built-in functionalities that adequately support the requirements of this technical test. This decision allows us to maintain simplicity and clarity while fully leveraging Laravel's native capabilities to deliver a well-structured and efficient solution.
+For this project, I chose not to use Domain Driven Design (DDD). In the context of Laravel, implementing DDD can often be considered "over-engineering", especially for projects where the complexity doesn't require the abstractions provided by DDD. The Laravel framework already offers a robust MVC architecture and built-in functionality that adequately supports the requirements of this technical test. This decision allows me to maintain simplicity and clarity while fully utilizing Laravel's native features to provide a well-structured and efficient solution.
 
 ## Authenticated API Routes Overview
 
 The authenticated API routes are secured using Laravel Sanctum, providing token-based authentication to protect sensitive operations and ensure that only authenticated users can access specific functionalities.
 
 ### How to log in to the application via the API client (Postman, Insomnia...)
-To log into the application via an API client, you need to send a POST request to the `/v1/login` endpoint with the user's email and password. The API will authenticate the user and return an access token that you can use to access authenticated routes.
+To log into the application via an API client, you must send a POST request to the `/v1/login` endpoint with the user's email and password. The API will authenticate the user and return an access token that you can use to access authenticated routes.
 
-The email and password is provide in the UserSeeder.php file.
+The email and password are provided in the UserSeeder.php file.
 - **Email:** admin@admin.com
 - **Password:** admin
 
